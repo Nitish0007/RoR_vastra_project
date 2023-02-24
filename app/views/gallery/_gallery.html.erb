@@ -1,0 +1,33 @@
+
+            <% !@products.nil? && @products.each do |product| %>
+               <div class="col-sm-6 col-md-4 col-lg-4">
+                  <div class="box">
+                     <div class="option_container">
+                        <div class="options">
+                        <% if user_signed_in? %>
+                           <%= button_to 'Buy Now',line_items_path(store_id: product), class:"option1" %>
+                           <% else %>
+                           <%= link_to 'Buy Now', user_session_path, class:"option1" %>
+                           <% end %>
+                        <div class="options">
+                           <%= link_to 'View',store_path(product.id), class:"option2" %>
+                        </div>
+                        </div>
+                     </div>
+                     <div class="img-box">
+                     <% if product.images.attached? %>
+                      <%= image_tag product.images.first, alt: "" %>
+                      <% end %>
+                     </div>
+                     <div class="detail-box">
+                        <h5>
+                           <%= product.title %>
+                        </h5>
+                        <h6>
+                           ₹ <%= product.price%>
+                        </h6>
+                     </div>
+                  </div>
+               </div>
+               
+            <% end %>

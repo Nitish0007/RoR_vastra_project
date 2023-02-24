@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Your Cart</h2>
+
+<ul>
+<% @cart.line_items.each do |item| %> 
+<li>
+<%= item.quantity %> &times; <%= item.store.title %> ₹<%= item.store.price%>
+</li>
+<% end %>
+<%= @cart.total_price %>
+<div class="btn-container">
+<%= button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Are you sure?' } %>
+<button><%= link_to "Checkout", gallery_checkout_path %></button>
+</div>
+ </ul>
+
+

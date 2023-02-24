@@ -1,0 +1,26 @@
+.btn-container{
+    display: flex;
+    gap: 20px;
+    input{
+        border-radius: 10px;
+    }
+    button{
+        border: none;
+        background-color: #333333;
+        color: white;
+        border-radius: 10px;
+        a{
+            color: white;
+            font-weight: bold;
+            padding: 0px 45px;
+            &:hover{
+                text-decoration: none;
+            }
+        }
+        
+
+        &:hover{
+            background-color: #f7444e;
+        }
+    }
+}
