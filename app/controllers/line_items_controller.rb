@@ -3,25 +3,20 @@ class LineItemsController < ApplicationController
   before_action :set_cart, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
-  # GET /line_items or /line_items.json
   def index
     @line_items = LineItem.all
   end
 
-  # GET /line_items/1 or /line_items/1.json
   def show
   end
 
-  # GET /line_items/new
   def new
     @line_item = LineItem.new
   end
 
-  # GET /line_items/1/edit
   def edit
   end
 
-  # POST /line_items or /line_items.json
   def create
     product = Store.find(params[:store_id])
     @line_item = @cart.add_product(product)
@@ -31,7 +26,7 @@ class LineItemsController < ApplicationController
         format.html { redirect_to @line_item.cart, notice: 'Added to Cart successfully' }
         format.json { render :show,
         status: :created, location: @line_item }
-        else
+      else
         format.html { render :new }
         format.json { render json: @line_item.errors,
         status: :unprocessable_entity } 
@@ -39,7 +34,6 @@ class LineItemsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /line_items/1 or /line_items/1.json
   def update
     respond_to do |format|
       if @line_item.update(line_item_params)
@@ -52,7 +46,6 @@ class LineItemsController < ApplicationController
     end
   end
 
-  # DELETE /line_items/1 or /line_items/1.json
   def destroy
     @line_item.destroy
 
